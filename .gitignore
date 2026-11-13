@@ -6,3 +6,6 @@ __pycache__/
 data/qdrant/
 data/uploads/
 .DS_Store
+.env
+.env.*
+!.env.example
