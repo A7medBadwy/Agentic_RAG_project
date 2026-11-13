@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentic RAG Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">✦</span><div><b>Agentic RAG</b><small>Document Intelligence</small></div></div>
+    <nav><a class="active" href="/">Overview</a><a href="#documents">Documents</a><a href="#assistant">AI Assistant</a></nav>
+    <div class="side-note"><span class="dot"></span> Local API workspace</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><p class="eyebrow">WORKSPACE / OVERVIEW</p><h1>Document Intelligence</h1><p class="muted">Upload sources, ask questions, and get evidence-backed answers.</p></div><a class="docs-link" href="/docs" target="_blank">API Docs ↗</a></header>
+    <section class="stats">
+      <div class="stat"><span>Indexed documents</span><strong id="doc-count">0</strong><small>Available in your local collection</small></div>
+      <div class="stat"><span>Agent workflow</span><strong>3 Agents</strong><small>Retriever · Analyst · Answer</small></div>
+      <div class="stat"><span>Retrieval</span><strong>Hybrid</strong><small>Semantic + keyword search</small></div>
+    </section>
+    <section class="panel" id="documents">
+      <div class="section-head"><div><p class="eyebrow">KNOWLEDGE BASE</p><h2>Upload documents</h2><p class="muted">Supported formats: PDF, DOCX, TXT</p></div></div>
+      <label class="dropzone" for="file-input"><div class="upload-icon">↑</div><b>Choose documents to upload</b><span>or drag and drop files here</span><input id="file-input" type="file" multiple accept=".pdf,.docx,.txt"></label>
+      <div class="actions"><button id="upload-btn" class="primary">Upload and index</button><span id="upload-status" class="muted"></span></div>
+      <div class="document-list"><div class="list-head"><b>Your documents</b><button class="text-btn" id="refresh-btn">Refresh</button></div><div id="documents-list" class="empty">No documents indexed yet.</div></div>
+    </section>
+    <section class="panel" id="assistant">
+      <div class="section-head"><div><p class="eyebrow">MULTI-AGENT ASSISTANT</p><h2>Ask your documents</h2><p class="muted">Answers are grounded in retrieved document passages.</p></div><span class="pill">● Ready</span></div>
+      <div id="chat-log" class="chat-log"><div class="welcome"><div class="bot-icon">✦</div><div><b>Welcome to your document assistant</b><p>Try: “Summarize the main findings” or “Compare the methods in these papers.”</p></div></div></div>
+      <form id="chat-form" class="chat-form"><input id="question" placeholder="Ask a question about your documents..." required><button class="primary" type="submit">Send ↑</button></form>
+      <p id="chat-status" class="muted tiny"></p>
+    </section>
+    <footer>Agentic RAG · Built with FastAPI, Qdrant and Sentence Transformers</footer>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body></html>
